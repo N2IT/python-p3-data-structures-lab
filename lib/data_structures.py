@@ -27,16 +27,24 @@ def print_spicy_foods(spicy_foods):
     # print([ food['name'] + " " + "(" + food['cuisine'] + ")" +  " | " + "Heat Level: " + "🌶" * food['heat_level'] for food in spicy_foods])
 
     for food in spicy_foods:
+        sp = " "
         print(
-            food['name'] + " " + "(" +
-            (food['cuisine']) + ")" + " " + "|" +
+            food['name'] + sp + "(" +
+            (food['cuisine']) + ")" + sp + "|" +
             " Heat Level: " + 
             "🌶" * food['heat_level']
             )
 
 
-def get_spicy_food_by_cuisine(typspicy_foods, cuisine):
-    pass
+def get_spicy_food_by_cuisine(spicy_foods, cuisine):
+        food_match = {
+            "name":"spicy_foods['name']",
+            "cusine":"spicy_foods['cuisine']",
+            "heat_level":"spicy_foods['heat_level']"
+        }
+
+        return food_match
+    
 
 def print_spiciest_foods(spicy_foods):
     pass
