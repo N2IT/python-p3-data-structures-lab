@@ -14,6 +14,11 @@ spicy_foods = [
         "cuisine": "Sichuan",
         "heat_level": 6,
     },
+    {
+        "name": "Hamburger",
+        "cuisine": "American",
+        "heat_level": 1,
+    }
 ]
 
 def get_names(spicy_foods):
@@ -29,22 +34,51 @@ def print_spicy_foods(spicy_foods):
     for food in spicy_foods:
         sp = " "
         print(
-            food['name'] + sp + "(" +
-            (food['cuisine']) + ")" + sp + "|" +
+            food['name'] + sp +
+            "(" + food['cuisine'] + ")" + sp + "|" +
             " Heat Level: " + 
             "🌶" * food['heat_level']
             )
 
 
 def get_spicy_food_by_cuisine(spicy_foods, cuisine):
-        cuisine_to_food_map = {
-            "American": spicy_foods[1],
-            "Thai": spicy_foods[0],
-            "Sichuan": spicy_foods[2]
-        }
-        return cuisine_to_food_map[cuisine]
+
+    # More dynamic function for searching through list of dicts
+    def check_cuisine(food):
+        if food['cuisine'] == cuisine:
+            return True
+        else:
+            return False
+        
+    filtered_food = filter(check_cuisine, spicy_foods)
+    for food in filtered_food:
+        # print(food)
+        return food
+
+# get_spicy_food_by_cuisine(spicy_foods, "American")
 
     
+
+        
+    # return [food for food in spicy_foods if food['cuisine'] == cuisine]
+    # use find / filter
+    # return new_list
+    # ipdb.set_trace()
+    
+    # returns the single dict once logic is met
+    # for food in spicy_foods:
+    #     if food['cuisine'] == cuisine:
+    #         return food
+        
+        # This was original answer that passed test but is not dynamic; if there are more than 1 of the same type of cuisine in db
+        # cuisine_to_food_map = {
+        #     "American": spicy_foods[1],
+        #     "Thai": spicy_foods[0],
+        #     "Sichuan": spicy_foods[2]
+        # }
+        # return cuisine_to_food_map[cuisine]
+
+        
 def print_spiciest_foods(spicy_foods):
     for food in spicy_foods:
         if food['heat_level'] > 5:
@@ -63,6 +97,11 @@ def get_average_heat_level(spicy_foods):
     
 
 def create_spicy_food(spicy_foods, spicy_food):
-
     spicy_foods.append(spicy_food)
     return spicy_foods
+
+# create_spicy_food(spicy_foods, {
+#     "name": "Hamburger",
+#     "cuisine": "American",
+#     "heat_level": 1
+# })
